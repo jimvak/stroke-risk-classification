@@ -83,11 +83,11 @@ stroke-risk-classification/
 ├── data/
 │   └── healthcare-dataset-stroke-data.csv
 ├── src/
-│   ├── stroke_dataset_exploration.py
-│   ├── stroke_random_forest_column_removal.py
-│   ├── stroke_random_forest_evaluation.py
-│   ├── stroke_random_forest_knn_imputation.py
-│   └── stroke_random_forest_linear_regression_imputation.py
+│   ├── stroke_eda.py
+│   ├── stroke_rf_drop_bmi.py
+│   ├── stroke_rf_mean_bmi_imputation.py
+│   ├── stroke_rf_knn_imputation.py
+│   └── stroke_rf_bmi_lr_imputation.py
 ├── .gitignore
 ├── LICENSE
 └── README.md
