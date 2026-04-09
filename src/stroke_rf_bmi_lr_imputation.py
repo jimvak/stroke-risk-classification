@@ -25,7 +25,7 @@ X = mydata[feature_names]
 
 y = mydata['stroke']
 
-#efarmogi labelencoder
+#implementing labelencoder
 
 le = LabelEncoder()
 
@@ -40,14 +40,14 @@ X['Residence_type']= le.fit_transform(X['Residence_type'])
 X['smoking_status']= le.fit_transform(X['smoking_status'])
 
 
-#edo kanoume oti xreiazetai gia to Linear Regression
+#we are doing what is needed for Linear Regression
 
 feature_names_reg = ['gender', 'age', 'hypertension', 'heart_disease', 'ever_married','work_type','Residence_type','avg_glucose_level','smoking_status']
 X_reg = mydata[feature_names_reg]
 
 y_reg = mydata['bmi']
 
-#efarmogi labelencoder
+#implementing labelencoder
 
 le_reg = LabelEncoder()
 
@@ -67,9 +67,9 @@ y_reg_train=pd.Series()
 
 
 
-#epilegoume ekeines tis eggrafes oi opoies den exoun naN sto bmi
-#aytes einai oi eggrafes oi opoies tha xrisimopoihthoun gia tin ekapaideysi 
-#tou montelou mas 
+#we are selecting these records that they have not naN bmi values
+#these are the records that they will be used for the training
+#of our model
 
 count=0
 
@@ -92,22 +92,22 @@ for i in range(len(X_reg)):
         
         
 
-#dimiourgia montelou linear regression
+#creating Linear Regression model
 
 regressor = LinearRegression()
 
-#ekpaideysi me linear regression
+#training with Linear Regression
 regressor.fit(X_reg_train, y_reg_train)
 
 
 
 #diatreksi tou dataset
 for i in range(len(X)):
-    #vriskoume tis eggrafes opu exoun nan stin timi tou bmi
+    #we are looking for the records which have nan bmi values
     if np.isnan(X['bmi'].loc[i]):
-        #dedomena pou tha dosoume sto logistic regression gia na ginoun predict
+        #input data for the logistic regression model in order to be predicted 
         myinput = X_reg.loc[i]
-        #ginetai o katallilos metasximatismos gia na mporesei na epiteyxuei to prediction
+        #we are doing the suitable transformation in order to achieve the prediction
         myinput=myinput.values.reshape(1,-1)
         #edo simplironetai i timi pou leipei me tin timi pou ginetai predict
         X['bmi'].loc[i] = regressor.predict(myinput)
@@ -120,10 +120,10 @@ for i in range(len(X)):
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25)
 
 
-# # #dimiourgia montelou
+# # #creating the RandomForest model
 clf=RandomForestClassifier(n_estimators=6000)
 
-# # #ekpaideysi
+# # #training
 clf.fit(X_train,y_train)
 
 # # #test
