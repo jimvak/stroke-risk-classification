@@ -95,8 +95,12 @@ stroke-risk-classification/
 ## How to Run
 
 ```bash
-git clone https://github.com/jimvak/email-spam-classification.git
-cd email-spam-classification
+git clone https://github.com/jimvak/stroke-risk-classification.git
+cd stroke-risk-classification
 pip install -r requirements.txt
-python src/spam_word2vec_nn.py
+python src/stroke_eda.py
+python src/stroke_rf_drop_bmi.py
+python src/stroke_rf_mean_bmi_imputation.py
+python src/stroke_rf_knn_imputation.py
+python src/stroke_rf_bmi_lr_imputation.py
 ```
