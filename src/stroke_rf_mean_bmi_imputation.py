@@ -25,7 +25,7 @@ X = mydata[feature_names]
 
 y = mydata['stroke']
 
-#efarmogi labelencoder
+#implementing labelencoder 
 
 le = LabelEncoder()
 
@@ -64,13 +64,13 @@ for i in range(len(X['bmi'])):
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25)
 
 
-# #dimiourgia montelou
+# # creating the RandomForestClassifier model 
 clf=RandomForestClassifier(n_estimators=6000)
 
-# #ekpaideysi
+# #training
 clf.fit(X_train,y_train)
 
-# #test
+# #testing
 y_pred=clf.predict(X_test)
 
 precision = precision_score(y_test, y_pred, average='binary')
